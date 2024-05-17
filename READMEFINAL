@@ -1,8 +1,0 @@
-- - Simple word guessing game, the theme is movie genres.
-- 4 total genres to guess from: horror, romance, action, comedy
-- 3 total chances to guess the word; if a letter is inputted, it will display the occurences of that letter in the answer. Typing a letter or a word uses 1 total chance.
-- Single player game. 
-- The game does NOT tell the player the position of letters in the word.
-- includes code that uses Pandas to create a leaderboard of attemped scores, players can identify themselves by typing in their name.
-- Credit: Jodi Aryee helped during Paired programming..
--   A player’s final score is the number of turns (letter guesses) they made before guessing the correct word. Lower scores are better.
