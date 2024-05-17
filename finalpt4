@@ -1,0 +1,52 @@
+import os
+import random
+import pandas as pd
+
+# Function to select a random word from a predefined list of movie genres
+def word_selection(): 
+    word_bank = ["horror", "romance", "action", "comedy"]
+    return random.choice(word_bank)
+
+# Function to clear the screen
+def erase_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+# Function to count occurrences of a given letter in a word
+def letter_count(word, letter):
+    count = word.count(letter)
+    return count
+
+# Main function to play the game
+def play_game():
+    erase_screen()  # Clear the screen at the start of the game
+    print("Welcome to Bryant's Word Guessing Game, this is a single-player game. The theme of this word is movie genres.")
+    print("For the people who want to win, you may guess a letter. You can guess the entire word as well, although you only get three word guesses.")
+
+    word = word_selection()  # Select a random word
+    print(f"The word this time is {word}")  # Display the selected word (for testing purposes, typically this should be hidden)
+    guessed_letters = []  # List to keep track of guessed letters
+    word_guesses = 0  # Counter for word guesses
+    letter_guesses = 0  # Counter for letter guesses
+    max_guesses = 3  # Maximum number of word guesses allowed
+
+    while True:
+        # Create a display string showing guessed letters and placeholders for unguessed letters
+        display = ""
+        for char in word:
+            if char in guessed_letters:
+                display += char
+            else:
+                display += "_"
+        print("Guesses:", ", ".join(guessed_letters))  # Show guessed letters
+        print("Word guesses left:", max_guesses - word_guesses)  # Show remaining word guesses
+        guess = input("Choose wisely: ").lower()  # Prompt the player for a guess
+        occurences = letter_count(word, guess)  # Count occurrences of the guessed letter
+        print(f"{guess} is seen in this word {occurences} times.")  # Inform the player of the occurrences
+        
+        # Check if the guess is valid (either a single letter or the entire word)
+        if (guess.isalpha() and len(guess) == 1) or (guess.isalpha() and len(guess) == len(word)):
+            letter_guesses += 1  # Increment letter guesses
+            if guess in guessed_letters:  
+                print("Already used that letter.")
+            else:
+                guessed_letters.append(guess)  # 
